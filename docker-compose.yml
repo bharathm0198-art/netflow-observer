@@ -1,0 +1,27 @@
+services:
+  collector:
+    build: .
+    container_name: netflow-collector
+    ports:
+      - "2055:2055/udp"
+    environment:
+      # Connect to the host machine's localhost
+      DB_HOST: host.docker.internal
+      # These will be picked up by settings.py, overriding defaults if needed
+      # User hardcoded defaults in settings.py, but env vars are safer/standard
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: ${DB_PASSWORD:-Mahesh@22}
+      COLLECTOR_PORT: 2055
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: netflow-grafana
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
