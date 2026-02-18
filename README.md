@@ -59,7 +59,7 @@ If you don't have a real router sending NetFlow packets, use the included genera
         -   **Host**: `host.docker.internal:5432` (Connects to your host's Postgres)
         -   **Database**: `postgres`
         -   **User**: `postgres`
-        -   **Password**: `Mahesh@22`
+        -   **Password**: `bharath@123`
         -   **TLS/SSL Method**: `Disable`
     -   Click **Save & test**.
 
